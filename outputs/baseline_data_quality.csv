@@ -1,0 +1,3 @@
+dataset,rows,columns,missing_cells,missing_pct,duplicate_rows
+Mathematics (student-mat.csv),395,33,0,0.0,0
+Portuguese (student-por.csv),649,33,0,0.0,0

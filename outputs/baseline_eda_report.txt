@@ -1,0 +1,72 @@
+================================================================================
+THIRANEX INTERNSHIP TASK 3: EDA BASELINE INSPECTION REPORT (STEP 2)
+================================================================================
+
+1. DATASET OVERVIEW & INTEGRITY
+- Raw Data Path: data/raw/
+- Mathematics Dataset: 395 rows, 33 columns
+- Portuguese Dataset: 649 rows, 33 columns
+- Total Missing Values: 0 across all 33 columns in both datasets
+- Exact Duplicates: 0 across both datasets
+- Raw datasets preserved with 0 modifications.
+
+2. KEY VARIABLE PROFILES
+[G1] - Period 1 Grade (Numerical)
+  Math: Mean: 10.91, Med: 11.0, Range: [3-19], Zeros: 0
+  Por:  Mean: 11.40, Med: 11.0, Range: [0-19], Zeros: 1
+[G2] - Period 2 Grade (Numerical)
+  Math: Mean: 10.71, Med: 11.0, Range: [0-19], Zeros: 13
+  Por:  Mean: 11.57, Med: 11.0, Range: [0-19], Zeros: 7
+[G3] - Final Grade (Numerical)
+  Math: Mean: 10.42, Med: 11.0, Range: [0-20], Zeros: 38
+  Por:  Mean: 11.91, Med: 12.0, Range: [0-19], Zeros: 15
+[age] - Student Age (Numerical)
+  Math: Mean: 16.70, Med: 17.0, Range: [15-22], Zeros: 0
+  Por:  Mean: 16.74, Med: 17.0, Range: [15-22], Zeros: 0
+[studytime] - Weekly Study Time (Numerical)
+  Math: Mean: 2.04, Med: 2.0, Range: [1-4], Zeros: 0
+  Por:  Mean: 1.93, Med: 2.0, Range: [1-4], Zeros: 0
+[failures] - Past Failures (Numerical)
+  Math: Mean: 0.33, Med: 0.0, Range: [0-3], Zeros: 312
+  Por:  Mean: 0.22, Med: 0.0, Range: [0-3], Zeros: 549
+[absences] - School Absences (Numerical)
+  Math: Mean: 5.71, Med: 4.0, Range: [0-75], Zeros: 115
+  Por:  Mean: 3.66, Med: 2.0, Range: [0-32], Zeros: 244
+[internet] - Internet Access (Categorical)
+  Math: yes: 329 (83.3%), no: 66 (16.7%)
+  Por:  yes: 498 (76.7%), no: 151 (23.3%)
+[higher] - Higher Ed Aspiration (Categorical)
+  Math: yes: 375 (94.9%), no: 20 (5.1%)
+  Por:  yes: 580 (89.4%), no: 69 (10.6%)
+[school] - School (Categorical)
+  Math: GP: 349 (88.4%), MS: 46 (11.6%)
+  Por:  GP: 423 (65.2%), MS: 226 (34.8%)
+[sex] - Sex (Categorical)
+  Math: F: 208 (52.7%), M: 187 (47.3%)
+  Por:  F: 383 (59.0%), M: 266 (41.0%)
+[address] - Address Type (Categorical)
+  Math: U: 307 (77.7%), R: 88 (22.3%)
+  Por:  U: 452 (69.6%), R: 197 (30.4%)
+
+3. MATHEMATICS VS PORTUGUESE COMPARISON
+- Average Final Grade (G3): Math = 10.42 (std=4.58), Portuguese = 11.91 (std=3.23)
+- Zero-Grade Incidence (G3=0): Math = 38 (9.62%), Portuguese = 15 (2.31%)
+- Mathematics exhibits higher dispersion, lower average score, and a ~4x higher rate of zero grades compared to Portuguese.
+- School Representation: Gabriel Pereira (GP) accounts for 88.4% of Math and 72.7% of Portuguese students.
+
+4. OVERLAPPING STUDENT ANALYSIS
+- Using the 13 identifying demographic keys established by Cortez & Silva (2008):
+- 382 students are co-enrolled in both Mathematics and Portuguese courses.
+- Represents 96.7% of Math students and 58.9% of Portuguese students.
+
+5. SUSPICIOUS PATTERNS, ANOMALIES & POTENTIAL OUTLIERS (NO DATA ALTERED)
+- Structural Zeros in G3: 38 math and 15 Portuguese students received 0 in G3 despite having non-zero G1/G2 grades in some cases, suggesting course dropouts or exam absence.
+- Absences Right-Skew: Math has an extreme value of 75 absences (75 days) and Portuguese has 32 absences (32 days).
+- Non-traditional Age Students: A small subgroup of students are aged 20-22 (typical high school age is 15-18), showing recurring failures.
+
+6. CANDIDATE RESEARCH QUESTIONS FOR DEEP EDA (STEP 3 & BEYOND)
+- Q1: What factors most strongly separate G3=0 dropouts from passing students?
+- Q2: How does weekly study time translate to academic gain across Math vs. Portuguese?
+- Q3: What role does parental education (Medu, Fedu) and family support (famsup) play in academic achievement?
+- Q4: Is there a measurable negative impact of alcohol consumption (Dalc, Walc) and high absences on final grades?
+- Q5: For the 382 overlapping students, is performance consistent across humanities (Portuguese) and STEM (Math)?

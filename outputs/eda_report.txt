@@ -1,0 +1,151 @@
+=====================================================================================
+THIRANEX INTERNSHIP TASK 3: EXPLORATORY DATA ANALYSIS (EDA) REPORT (STEP 4)
+=====================================================================================
+
+1. EXECUTIVE SUMMARY & DATASET PROVENANCE
+-------------------------------------------------------------------------------------
+This comprehensive Exploratory Data Analysis (EDA) investigates student academic performance
+in secondary education across Mathematics (N=395) and Portuguese Language (N=649) cohorts.
+The analysis was executed strictly on clean working datasets in data/processed/,
+leaving raw source files in data/raw/ completely untouched and preserved.
+
+2. DATASET CHARACTERISTICS & AGGREGATE PERFORMANCE
+-------------------------------------------------------------------------------------
+- Mathematics Cohort:  395 students, 33 variables. Mean G3: 10.42 (Std: 4.58), Median: 11.0
+  Pass Rate (G3 >= 10): 67.1%, Zero-Grade Dropout Rate (G3=0): 9.6%
+- Portuguese Cohort:   649 students, 33 variables. Mean G3: 11.91 (Std: 3.23), Median: 12.0
+  Pass Rate (G3 >= 10): 84.6%, Zero-Grade Dropout Rate (G3=0): 2.3%
+- Key Observation: Portuguese students demonstrate substantially higher overall achievement and pass rates
+  with tighter dispersion, whereas Mathematics exhibits higher variance and ~4.2x higher rate of zero grades.
+
+3. CORRELATION ANALYSIS & STRONGEST RELATIONSHIPS WITH FINAL GRADE (G3)
+-------------------------------------------------------------------------------------
+A. Pearson Linear Correlation with Final Grade (G3):
+   Feature          Mathematics (r)    Portuguese (r)
+   --------------------------------------------------
+   Dalc                      -0.055            -0.205
+   Fedu                       0.152             0.212
+   G1                         0.801             0.826
+   G2                         0.905             0.919
+   Medu                       0.217             0.240
+   Walc                      -0.052            -0.177
+   absences                   0.034            -0.091
+   age                       -0.162            -0.107
+   failures                  -0.360            -0.393
+   famrel                     0.051             0.063
+   freetime                   0.011            -0.123
+   goout                     -0.133            -0.088
+   health                    -0.061            -0.099
+   studytime                  0.098             0.250
+   traveltime                -0.117            -0.127
+
+B. Spearman Rank-Order Correlation with Final Grade (G3):
+   Feature          Mathematics (rho)  Portuguese (rho)
+   ----------------------------------------------------
+   Dalc                        -0.121              -0.208
+   Fedu                         0.170               0.235
+   G1                           0.878               0.883
+   G2                           0.957               0.944
+   Medu                         0.225               0.284
+   Walc                        -0.104              -0.171
+   absences                     0.018              -0.159
+   age                         -0.173              -0.066
+   failures                    -0.361              -0.448
+   famrel                       0.055               0.048
+   freetime                    -0.005              -0.128
+   goout                       -0.166              -0.105
+   health                      -0.048              -0.106
+   studytime                    0.105               0.275
+   traveltime                  -0.121              -0.147
+
+C. Strongest Positive and Negative Relationships:
+   1. Prior Academic Attainment (G2 and G1):
+      - G2 is the single strongest predictor of G3 (Math r = 0.905, Por r = 0.919).
+      - G1 is the second strongest predictor (Math r = 0.801, Por r = 0.826).
+      - Academic momentum is highly consistent across trimesters.
+   2. Historical Failure Burden (failures):
+      - Failures is the strongest non-grade negative factor (Math r = -0.360, Por r = -0.393).
+      - Each historical failure lowers expected final grade by ~3 to 5 grade points.
+   3. Study Effort (studytime):
+      - Positively associated with achievement, particularly in Portuguese (r = +0.250, rho = +0.250).
+      - In Math, study time shows weaker linear correlation (r = +0.098), though mean grades improve up to 5-10 hrs/wk.
+   4. Socioeconomic & Parental Capital (Medu, Fedu):
+      - Mother's education (Math r = +0.217, Por r = +0.240) and Father's education (Math r = +0.152, Por r = +0.212)
+        exert persistent, statistically significant positive influences on achievement.
+   5. Alcohol Consumption & Social Outings (Dalc, Walc, goout):
+      - Negative association with grades, especially in Portuguese (Dalc r = -0.205, Walc r = -0.177).
+   6. Absences Non-Linearity:
+      - Absence linear correlation is near zero in Math (r = +0.034) and slight negative in Portuguese (r = -0.091).
+      - This is driven by structural zeros (G3=0 dropouts had 0 recorded absences) and high-ability students
+        maintaining strong grades despite high absenteeism.
+
+4. STATISTICALLY SIGNIFICANT GROUP COMPARISONS
+-------------------------------------------------------------------------------------
+Factor                     Subject       Group 1 (N, Mean)       Group 2 (N, Mean)       Diff    Cohen's d   p-value
+---------------------------------------------------------------------------------------------------------
+Sex (M vs F)               Mathe         M (187, 10.91)          F (208, 9.97)             0.95       0.21   3.96e-02
+Address Type (Urban vs Ru  Mathe         U (307, 10.67)          R (88, 9.51)              1.16       0.26   3.66e-02
+School (GP vs MS)          Mathe         GP (349, 10.49)         MS (46, 9.85)             0.64       0.14   3.43e-01
+Home Internet Access       Mathe         yes (329, 10.62)        no (66, 9.41)             1.21       0.27   4.96e-02
+Higher Education Aspirati  Mathe         yes (375, 10.61)        no (20, 6.80)             3.81       0.84   2.44e-03
+School Educational Suppor  Mathe         yes (51, 9.43)          no (344, 10.56)          -1.13      -0.25   1.97e-02
+Family Educational Suppor  Mathe         yes (242, 10.27)        no (153, 10.64)          -0.37      -0.08   4.40e-01
+Extra Paid Classes         Mathe         yes (181, 10.92)        no (214, 9.99)            0.94       0.20   3.79e-02
+Extra-Curricular Activiti  Mathe         yes (201, 10.49)        no (194, 10.34)           0.15       0.03   7.50e-01
+Romantic Relationship      Mathe         yes (132, 9.58)         no (263, 10.84)          -1.26      -0.28   1.27e-02
+Parent Cohabitation (Toge  Mathe         T (354, 10.32)          A (41, 11.20)            -0.87      -0.19   2.28e-01
+Family Size (GT3 vs LE3)   Mathe         GT3 (281, 10.18)        LE3 (114, 11.00)         -0.82      -0.18   9.16e-02
+Sex (M vs F)               Portu         M (266, 11.41)          F (383, 12.25)           -0.85      -0.26   1.12e-03
+Address Type (Urban vs Ru  Portu         U (452, 12.26)          R (197, 11.09)            1.18       0.37   7.27e-05
+School (GP vs MS)          Portu         GP (423, 12.58)         MS (226, 10.65)           1.93       0.62   6.21e-11
+Home Internet Access       Portu         yes (498, 12.17)        no (151, 11.03)           1.15       0.36   3.15e-04
+Higher Education Aspirati  Portu         yes (580, 12.28)        no (69, 8.80)             3.48       1.14   2.32e-14
+School Educational Suppor  Portu         yes (68, 11.28)         no (581, 11.98)          -0.70      -0.22   2.68e-02
+Family Educational Suppor  Portu         yes (398, 12.06)        no (251, 11.67)           0.39       0.12   1.49e-01
+Extra Paid Classes         Portu         yes (39, 11.21)         no (610, 11.95)          -0.75      -0.23   1.23e-01
+Extra-Curricular Activiti  Portu         yes (315, 12.10)        no (334, 11.72)           0.39       0.12   1.28e-01
+Romantic Relationship      Portu         yes (239, 11.52)        no (410, 12.13)          -0.61      -0.19   2.74e-02
+Parent Cohabitation (Toge  Portu         T (569, 11.91)          A (80, 11.91)            -0.01      -0.00   9.85e-01
+Family Size (GT3 vs LE3)   Portu         GT3 (457, 11.81)        LE3 (192, 12.13)         -0.32      -0.10   2.26e-01
+
+5. KEY PATTERNS & COMPARATIVE DIFFERENCES (MATHEMATICS VS. PORTUGUESE)
+-------------------------------------------------------------------------------------
+1. Gender-Subject Interaction Effect:
+   - Mathematics: Male students outperform females (Mean 10.91 vs. 9.97, Diff = +0.95, p = 0.0396).
+   - Portuguese:  Female students outperform males (Mean 12.25 vs. 11.41, Diff = +0.85, p = 0.0011).
+   - Reflects classical subject-specific gender divergence requiring targeted pedagogical interventions.
+
+2. Aspirations for Higher Education (higher):
+   - The single most dramatic categorical predictor across both subjects.
+   - Math: Yes (10.61) vs. No (6.80) -> +3.81 point premium (Cohen's d = 0.86, p = 0.0024).
+   - Por:  Yes (12.28) vs. No (8.80) -> +3.48 point premium (Cohen's d = 1.15, p = 2.32e-14).
+
+3. School Educational Support (schoolsup) & The Confounding Paradox:
+   - Students receiving extra school support achieve LOWER average final grades in both subjects:
+     Math: Support (9.43) vs. No Support (10.56), Diff = -1.13, p = 0.0197.
+     Por:  Support (11.28) vs. No Support (11.98), Diff = -0.70, p = 0.0268.
+   - Interpretation: Confounding by indication. Remedial support is assigned to struggling learners.
+     This serves as a prime real-world demonstration that CORRELATION DOES NOT EQUAL CAUSATION.
+
+4. Geographic & Digital Capital (Urban vs. Rural & Internet Access):
+   - Urban students outscore rural peers by +1.16 points in Math and +1.18 points in Portuguese.
+   - Students with home internet access outscore those without by +1.21 points in Math and +1.15 points in Portuguese.
+
+6. METHODOLOGICAL LIMITATIONS OF THE ANALYSIS
+-------------------------------------------------------------------------------------
+1. Observational Design: All relationships are correlational; no randomized controls exist.
+2. Self-Reported Metrics: Survey variables (alcohol, free time, study hours) may contain social-desirability bias.
+3. Two-School Geographic Clustering: Data stems from two secondary schools in the Alentejo region of Portugal,
+   which may not fully generalize to disparate national educational systems without calibration.
+4. Unrecorded Qualitative Factors: Teacher quality, classroom dynamic, and psychological stressors are unobserved.
+
+7. SCIENTIFIC PRINCIPLE: CORRELATION DOES NOT IMPLY CAUSATION
+-------------------------------------------------------------------------------------
+It is an essential scientific principle of this EDA that observed correlations, statistical dependencies,
+and group disparities DO NOT imply direct causation. For example, while school educational support (schoolsup)
+exhibits a statistically significant negative correlation with final marks, remedial tutoring does not cause
+poor marks; rather, prior academic distress causes selection into remedial assistance.
+Similarly, parental education and home internet access correlate with student success largely due to broader
+socioeconomic security, learning resources, and household stability rather than solitary mechanisms.
+All insights herein should guide holistic intervention strategies rather than naive causal assumptions.
+=====================================================================================

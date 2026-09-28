@@ -1,0 +1,25 @@
+subject,factor,description,group1_name,group1_n,group1_mean,group1_median,group1_std,group2_name,group2_n,group2_mean,group2_median,group2_std,mean_diff_g1_minus_g2,cohens_d,welch_t_stat,welch_p_val,mann_whitney_u,mann_whitney_p_val,statistically_significant_05
+Mathematics,sex,Sex (M vs F),M,187,10.91,11.0,4.5,F,208,9.97,10.0,4.62,0.948,0.208,2.065,0.039577,21758.0,0.040653,True
+Mathematics,address,Address Type (Urban vs Rural),U,307,10.67,11.0,4.56,R,88,9.51,10.0,4.56,1.163,0.255,2.11,0.036614,15737.5,0.017758,True
+Mathematics,school,School (GP vs MS),GP,349,10.49,11.0,4.63,MS,46,9.85,10.0,4.24,0.642,0.14,0.956,0.34313,8956.0,0.20019,False
+Mathematics,internet,Home Internet Access,yes,329,10.62,11.0,4.58,no,66,9.41,10.0,4.49,1.208,0.265,1.989,0.049552,12661.0,0.032396,True
+Mathematics,higher,Higher Education Aspiration,yes,375,10.61,11.0,4.49,no,20,6.8,8.0,4.83,3.808,0.844,3.447,0.00244,5445.5,0.00062302,True
+Mathematics,schoolsup,School Educational Support,yes,51,9.43,10.0,2.87,no,344,10.56,11.0,4.77,-1.13,-0.247,-2.37,0.019742,6507.0,0.0028024,True
+Mathematics,famsup,Family Educational Support,yes,242,10.27,11.0,4.55,no,153,10.64,11.0,4.64,-0.368,-0.08,-0.774,0.43975,17410.0,0.31654,False
+Mathematics,paid,Extra Paid Classes,yes,181,10.92,11.0,3.79,no,214,9.99,11.0,5.13,0.937,0.205,2.083,0.037901,20728.5,0.22672,True
+Mathematics,activities,Extra-Curricular Activities,yes,201,10.49,11.0,4.68,no,194,10.34,11.0,4.49,0.147,0.032,0.319,0.74956,20082.0,0.60486,False
+Mathematics,romantic,Romantic Relationship,yes,132,9.58,11.0,4.86,no,263,10.84,11.0,4.39,-1.261,-0.277,-2.512,0.012655,15423.0,0.06953,True
+Mathematics,Pstatus,Parent Cohabitation (Together vs Apart),T,354,10.32,11.0,4.61,A,41,11.2,11.0,4.29,-0.87,-0.19,-1.22,0.22816,6651.5,0.38002,False
+Mathematics,famsize,Family Size (GT3 vs LE3),GT3,281,10.18,11.0,4.7,LE3,114,11.0,11.0,4.23,-0.822,-0.18,-1.694,0.091555,14670.0,0.18847,False
+Portuguese,sex,Sex (M vs F),M,266,11.41,11.0,3.32,F,383,12.25,12.0,3.12,-0.847,-0.264,-3.275,0.0011246,42961.5,0.00063166,True
+Portuguese,address,Address Type (Urban vs Rural),U,452,12.26,12.0,2.99,R,197,11.09,11.0,3.61,1.177,0.369,4.02,7.2739e-05,53947.0,1.5674e-05,True
+Portuguese,school,School (GP vs MS),GP,423,12.58,13.0,2.63,MS,226,10.65,11.0,3.83,1.926,0.621,6.754,6.2118e-11,64220.5,3.7924e-13,True
+Portuguese,internet,Home Internet Access,yes,498,12.17,12.0,3.12,no,151,11.03,11.0,3.45,1.146,0.359,3.658,0.00031533,45616.5,6.3897e-05,True
+Portuguese,higher,Higher Education Aspiration,yes,580,12.28,12.0,3.06,no,69,8.8,10.0,2.97,3.479,1.141,9.159,2.3231e-14,33163.5,2.4474e-19,True
+Portuguese,schoolsup,School Educational Support,yes,68,11.28,11.0,2.3,no,581,11.98,12.0,3.32,-0.7,-0.217,-2.247,0.026753,16520.0,0.026106,True
+Portuguese,famsup,Family Educational Support,yes,398,12.06,12.0,2.97,no,251,11.67,12.0,3.6,0.392,0.122,1.444,0.1493,51676.5,0.45494,False
+Portuguese,paid,Extra Paid Classes,yes,39,11.21,12.0,2.85,no,610,11.95,12.0,3.25,-0.746,-0.231,-1.571,0.12333,10268.5,0.14941,False
+Portuguese,activities,Extra-Curricular Activities,yes,315,12.1,12.0,3.22,no,334,11.72,11.0,3.24,0.386,0.12,1.524,0.12804,57554.5,0.036934,False
+Portuguese,romantic,Romantic Relationship,yes,239,11.52,12.0,3.56,no,410,12.13,12.0,3.0,-0.606,-0.188,-2.213,0.027425,44804.5,0.067187,True
+Portuguese,Pstatus,Parent Cohabitation (Together vs Apart),T,569,11.91,12.0,3.23,A,80,11.91,12.0,3.22,-0.007,-0.002,-0.019,0.98469,22556.5,0.89648,False
+Portuguese,famsize,Family Size (GT3 vs LE3),GT3,457,11.81,12.0,3.35,LE3,192,12.13,12.0,2.92,-0.318,-0.099,-1.212,0.22606,42818.0,0.62672,False

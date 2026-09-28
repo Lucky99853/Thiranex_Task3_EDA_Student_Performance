@@ -1,0 +1,62 @@
+================================================================================
+THIRANEX INTERNSHIP TASK 3: DATA CLEANING & QUALITY ASSESSMENT REPORT (STEP 3)
+================================================================================
+
+1. DATA PROVENANCE & RAW DATA INTEGRITY AUDIT
+- Raw Source Files: data/raw/student-mat.csv, data/raw/student-por.csv
+- Raw Datasets Preserved: 100% UNTOUCHED (zero modifications, deletions, or overwrites)
+- Processed Clean Files: data/processed/student-mat-clean.csv, data/processed/student-por-clean.csv
+- Row Count Invariance: Math = 395/395 rows (100%), Por = 649/649 rows (100%)
+- Missing Value Count: 0 cells (100% complete)
+- Duplicate Record Count: 0 rows
+
+2. VARIABLE TYPOLOGY FOR EXPLORATORY DATA ANALYSIS
+[Continuous / Metric Numerical (4 variables)]:
+  absences, G1, G2, G3
+[Discrete Count Numerical (2 variables)]:
+  age, failures
+[Ordinal Numerical (10 variables)]:
+  Medu, Fedu, traveltime, studytime, famrel, freetime, goout, Dalc, Walc, health
+[Binary Categorical (13 variables)]:
+  school, sex, address, famsize, Pstatus, schoolsup, famsup, paid, activities, nursery, higher, internet, romantic
+[Nominal Categorical (4 variables)]:
+  Mjob, Fjob, reason, guardian
+
+3. INVESTIGATION OF ANOMALIES & CLEANING DECISIONS
+--------------------------------------------------------------------------------
+A. Investigation of G3 = 0 Observations:
+   - Mathematics: 38 students (9.62%)
+     G1: Mean=7.53, Min=4, Max=12
+     G2: Mean=4.66, Min=0, Max=10
+     Absences: All records have exactly 0 absences recorded.
+   - Portuguese: 15 students (2.31%)
+     G1: Mean=7.07, Min=4, Max=11
+     G2: Mean=3.8, Min=0, Max=9
+     Absences: All records have exactly 0 absences recorded.
+   - Findings & Decision: RETAINED.
+     The fact that all G3=0 students possess legitimate non-zero G1 marks (up to 12 in Math, 11 in Por)
+     and precisely 0 recorded absences indicates they are structural course dropouts or exam absentees.
+     Deleting them would introduce survival bias into the EDA. They are preserved for dropout risk analysis.
+
+B. Investigation of Absences Outliers:
+   - Mathematics: 15 IQR outliers (values 21 to 75; upper fence = 20 days).
+   - Portuguese: 21 IQR outliers (values 16 to 32; upper fence = 15 days).
+   - Findings & Decision: RETAINED.
+     Absence counts are non-negative and physically plausible (a school year has ~180 instructional days).
+     Cross-referencing shows students with high absences still attained varied passing grades (even G3=18),
+     reflecting real-world chronic medical conditions or outside obligations rather than measurement errors.
+
+C. Investigation of Older Students (Ages 20–22):
+   - Mathematics: 5 students (Ages: [20, 21, 22]).
+   - Portuguese: 9 students (Ages: [20, 21, 22]).
+   - Findings & Decision: RETAINED.
+     Data dictionary explicitly validates ages 15–22. The 21 and 22-year-old students show multiple prior failures
+     (e.g., 3 failures), which is consistent with the Portuguese educational system's grade repetition rules.
+     Other 20-year-old students show stellar performance (G3=18), representing adult continuing education.
+
+4. SUMMARY OF ACTIONS PERFORMED
+- Formally validated all 33 features against domain constraints (zero invalid categories or out-of-bounds values).
+- Standardized string values with trailing whitespace stripping.
+- Exported clean datasets to data/processed/student-mat-clean.csv and student-por-clean.csv.
+- Generated quality tracking table and 3 publication-ready diagnostic visualizations.
+- Retained 100% of observations to prevent selection bias and support rigorous downstream EDA.

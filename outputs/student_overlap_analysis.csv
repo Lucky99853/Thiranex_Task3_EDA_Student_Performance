@@ -1,0 +1,2 @@
+match_keys,mat_records,por_records,mat_unique_identifying_profiles,por_unique_identifying_profiles,matched_records_count,unique_matched_students_in_mat,unique_matched_students_in_por
+"['school', 'sex', 'age', 'address', 'famsize', 'Pstatus', 'Medu', 'Fedu', 'Mjob', 'Fjob', 'reason', 'nursery', 'internet']",395,649,391,637,382,370,374
